@@ -1,0 +1,93 @@
+.main {
+  margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; 
+}
+.container {
+  display: flex;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.left-panel {
+  background: rgb(104, 209, 221);
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 40px;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.right-panel {
+  flex: 3;
+}
+
+.title {
+  text-align: center;
+
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.scorecard {
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  padding: 20px;
+  border-top: 2px solid white;
+  font-size: 1.5em;
+}
+.score {
+  padding: 20px;
+  justify-content: right;
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background-color: #698ade;
+  color: #000;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  transition: transform 0.2s ease-in, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 5px 5px #a8bce1;
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
