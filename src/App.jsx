@@ -298,7 +298,7 @@ function App() {
         <div className="title">TIDDI GAMING</div>
         <div className="container">
           <div className="left-panel">
-            {count > 0 ? (str = str + timer()) : (currBall = Random(ball))}
+            {currBall}
           </div>
 
           <div className="right-panel">
