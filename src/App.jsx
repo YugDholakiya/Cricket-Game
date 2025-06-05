@@ -18,13 +18,7 @@ function App() {
   function Random(data) {
     return data[Math.floor(Math.random() * data.length)];
   }
-  function timer() {
-    setTimeout(() => {
-      setCount(count - 1);
-    }, 1000);
-    return count;
-  }
-
+  
   const [score, setScore] = useState({
     runs: 0,
     wks: 0,
@@ -290,6 +284,12 @@ function App() {
       setCount(3);
     }
   }
+function timer() {
+    setTimeout(() => {
+      setCount(count - 1);
+    }, 1000);
+    return count;
+  }
 
   
   return (
@@ -298,7 +298,7 @@ function App() {
         <div className="title">TIDDI GAMING</div>
         <div className="container">
           <div className="left-panel">
-            {currBall}
+            {count > 0 ? (str = str + timer()) : (currBall = Random(ball))}
           </div>
 
           <div className="right-panel">
