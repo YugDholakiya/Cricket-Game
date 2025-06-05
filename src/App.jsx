@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 
@@ -11,14 +11,12 @@ function App() {
   const [count, setCount] = useState(3);
   const sc = [18, 19, 20, 21, 22];
   const ball = ["BOUNCER", "YORKER", "FULL TOSS", "SLOWER BALL", "SPIN BALL"];
-  const [scr, setScr] = useState(Random(sc)); 
-
- 
+  const [scr, setScr] = useState(Random(sc));
 
   function Random(data) {
     return data[Math.floor(Math.random() * data.length)];
   }
-  
+
   const [score, setScore] = useState({
     runs: 0,
     wks: 0,
@@ -120,7 +118,7 @@ function App() {
       src: "UpperCut.jpg",
     },
   ];
-  function updateScore(run, wk = 0) { 
+  function updateScore(run, wk = 0) {
     if (score.target - run <= 0) {
       nav("/GameOver", { state: { isWon: true } });
     } else if (
@@ -157,11 +155,10 @@ function App() {
         currRuns: " " + run,
       }));
     }
-  } 
+  }
 
   function handleClick(e) {
     if (count === 0) {
-        
       setScore((prevScore) => ({
         ...prevScore,
         balls: score.balls + 1,
@@ -284,14 +281,13 @@ function App() {
       setCount(3);
     }
   }
-function timer() {
+  function timer() {
     setTimeout(() => {
       setCount(count - 1);
     }, 1000);
     return count;
   }
 
-  
   return (
     <>
       <div className="main">
@@ -330,6 +326,7 @@ function timer() {
           <span>{score.target} need to win</span>
           <span>Target : {scr}</span>
         </div>
+        <span className="footer">Chattary Ajwan Infotech Pvt. Ltd.</span>
       </div>
     </>
   );
