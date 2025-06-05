@@ -167,7 +167,7 @@ function App() {
 
   function handleClick(e) {
     if (count === 0) {
-       
+        
       setScore((prevScore) => ({
         ...prevScore,
         balls: score.balls + 1,
