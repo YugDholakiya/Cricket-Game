@@ -16,7 +16,7 @@ function App() {
   function Random(data) {
     return data[Math.floor(Math.random() * data.length)];
   }
-
+  
   const [score, setScore] = useState({
     runs: 0,
     wks: 0,

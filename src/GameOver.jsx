@@ -6,7 +6,7 @@ export default function GameOver() {
   return (
     <div className="page">
       <div className="box">
-        {console.log(location.isWon)}
+
         {location.state.isWon === true ? (
           <div className="b1">
             <img src="won.webp" />
