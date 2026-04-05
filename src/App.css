@@ -96,3 +96,24 @@
   font-size: 1.3em;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
+@media (max-width: 768px) {
+      .container {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .left-panel {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }

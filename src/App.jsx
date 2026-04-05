@@ -12,9 +12,18 @@ function App() {
   const sc = [18, 19, 20, 21, 22];
   const ball = ["BOUNCER", "YORKER", "FULL TOSS", "SLOWER BALL", "SPIN BALL"];
   const [scr, setScr] = useState(Random(sc));
+  const [totalOvers, setTotalOvers] = useState(null);
 
   function Random(data) {
     return data[Math.floor(Math.random() * data.length)];
+  }
+
+  function startGame(overs) {
+    const baseTarget = Random(sc);
+    const newTarget = Math.floor(baseTarget * (overs / 2));
+    setTotalOvers(overs);
+    setScr(newTarget);
+    setScore(prev => ({ ...prev, target: newTarget }));
   }
   
   const [score, setScore] = useState({
@@ -119,11 +128,12 @@ function App() {
     },
   ];
   function updateScore(run, wk = 0) {
+    const totalWickets = totalOvers === 2 ? 3 : totalOvers === 5 ? 5 : 10;
     if (score.target - run <= 0) {
       nav("/GameOver", { state: { isWon: true } });
     } else if (
-      (score.overs === 1 && score.balls == 5) ||
-      score.wks + wk === 3
+      (score.overs === totalOvers - 1 && score.balls == 5) ||
+      score.wks + wk === totalWickets
     ) {
       nav("/GameOver", { state: { isWon: false } });
     }
@@ -292,6 +302,17 @@ function App() {
     <>
       <div className="main">
         <div className="title">TIDDI GAMING</div>
+        {totalOvers === null ? (
+          <div className="container" style={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+            <h2 style={{ color: "white", marginBottom: "20px" }}>SELECT OVERS</h2>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <button className="card" onClick={() => startGame(2)} style={{ padding: "10px 20px", fontSize: "1.5rem" }}>2 OVERS</button>
+              <button className="card" onClick={() => startGame(5)} style={{ padding: "10px 20px", fontSize: "1.5rem" }}>5 OVERS</button>
+              <button className="card" onClick={() => startGame(10)} style={{ padding: "10px 20px", fontSize: "1.5rem" }}>10 OVERS</button>
+            </div>
+          </div>
+        ) : (
+          <>
         <div className="container">
           <div className="left-panel">
             {count > 0 ? (str = str + timer()) : (currBall = Random(ball))}
@@ -319,13 +340,15 @@ function App() {
             TEAM : {score.runs} / {score.wks}
           </span>
           <span>
-            Overs: {score.overs}.{score.balls} (2)
+            Overs: {score.overs}.{score.balls} ({totalOvers})
           </span>
 
           <span> {score.currRuns} </span>
           <span>{score.target} need to win</span>
           <span>Target : {scr}</span>
         </div>
+          </>
+        )}
         <span className="footer">Chattary Ajwan Infotech Pvt. Ltd.</span>
       </div>
     </>
